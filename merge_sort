@@ -1,0 +1,27 @@
+import random
+
+def mergeSort(A):
+    if len(A) <= 1:
+        return A
+    else:
+        mid = len(A) // 2
+        l_part = mergeSort(A[:mid])
+        r_part = mergeSort(A[mid:])
+        return merge(l_part, r_part)
+
+def merge(left, right):
+    result = []
+    while len(left) > 0 and len(right) > 0:
+        if left[0] <= right[0]:
+            result.append(left.pop(0))
+        else:
+            result.append(right.pop(0))
+    result += left
+    result += right
+    return result
+
+
+if __name__ == '__main__':
+	arr = [random.ranint(i) for i in range(100)]
+	arr_s = mergeSort(arr)
+	print(arr_s)
