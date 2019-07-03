@@ -1,0 +1,23 @@
+def binary_search(li:list, item:int) -> int:
+    low, high = 0, len(li) - 1
+
+
+    while low <= high:
+        mid = (low + high) // 2
+        guess = li[mid]
+        if guess == item:
+            return mid
+
+        elif guess > item:
+            high = mid + 1
+
+        elif guess < item:
+            low = mid - 1
+
+    return None
+
+if __name__ == '__main__':
+    listt = [i for i in range(1, 8)]
+    key = 3
+    result = binary_search(listt, key)
+    print(result)
